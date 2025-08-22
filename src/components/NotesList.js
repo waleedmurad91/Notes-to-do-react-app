@@ -107,14 +107,12 @@ const [searchTerm, setSearchTerm] = useState("");
       const reminderInput = document.getElementById('newReminderTime');
       const newTime = reminderInput.value;
       if (!newTime) return;
-
       const updatedNotes = [...notes];
       updatedNotes[index] = {
         ...updatedNotes[index],
         reminder: newTime
       };
       setNotes(updatedNotes);
-
       overlay.style.display = "none";
     };
   }
@@ -154,7 +152,13 @@ const [searchTerm, setSearchTerm] = useState("");
   const now = new Date().toLocaleString("en-US");
   const updatedNotes = notes.map(note => {
     if (new Date(note.reminder).toLocaleString("en-US") === now) {
-      alert(note.title);
+      const toshown = document.querySelectorAll('.reminder-shown');
+      toshown.forEach(element=>{
+        if (element.id === String(note.id)){
+         element.textContent = '✅Reminder shown';
+         element.style.backgroundColor = 'rgb(126, 219, 126)';
+        }
+      });
     }
     return note;
   });
@@ -189,6 +193,7 @@ useEffect(() => {
               style={{ backgroundColor: note.color }}
               data-id={note.id}
             >
+              <div className="reminder-shown" id={`${note.id}`}>⏰{new Date(note.reminder).toLocaleString("en-US")}</div>
               <h3>{note.title}</h3>
               <input
                 type="text"
@@ -263,6 +268,7 @@ useEffect(() => {
                 style={{ backgroundColor: note.color }}
                 data-id={note.id}
               >
+                
                 <h3>{note.title}</h3>
                 <div className="notes-tag">
                   <span>{note.tags}</span>

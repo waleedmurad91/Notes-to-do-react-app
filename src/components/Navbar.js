@@ -17,10 +17,3 @@ export default function Navbar({ onNewNoteClick, onaboutClick, onHowtoClick }) {
     </>
   )
 }
-// export function navbaropen(){
-//   const newnoteBtn = document.getElementById('newnote-btn');
-//   newnoteBtn.addEventListener('click',()=>{
-//     const overlay = document.getElementById('new-note-overlay');
-//     overlay.style.display = 'block';
-//   })
-// }

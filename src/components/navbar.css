@@ -31,7 +31,7 @@
     list-style: none;
 }
 .menu-btn button{
-        color: black;
+    color: black;
     padding: 8px 12px;
     margin-left: 4px;
     cursor: pointer;
@@ -44,4 +44,17 @@
 .menu-btn button:hover{
         scale: 1.05;
     opacity: 0.8;
+}
+
+@media (max-width : 768px) {
+    .nav-bar{
+        flex-direction: column;
+    }
+    .logo h1{
+        font-size: 24px;
+    }
+    .menu-btn button{
+    font-size: 12px;
+    padding: 10px 5px;
+    }
 }
